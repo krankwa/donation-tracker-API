@@ -23,7 +23,7 @@ DEBUG = config('DEBUG', default='True').lower() == 'true'
 
 # Render deployment configuration
 if not DEBUG:
-    ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(' ')
+    ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='relief-hero.onrender.com').split(',')
 else:
     ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=Csv())
 
