@@ -1,0 +1,1 @@
+web: gunicorn donation_backend.wsgi --log-file -

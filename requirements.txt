@@ -1,0 +1,24 @@
+Django==4.2.7
+djangorestframework==3.14.0
+djangorestframework-simplejwt==5.3.0
+django-cors-headers==4.3.0
+python-decouple==3.8
+bleach==6.1.0
+channels==4.0.0
+daphne==4.0.0
+Pillow==10.1.0
+
+# Social Authentication
+django-allauth==0.57.0
+dj-rest-auth==5.0.2
+
+# Deployment Dependencies for Render
+gunicorn==21.2.0
+psycopg2-binary==2.9.9
+whitenoise==6.6.0
+dj-database-url==2.1.0
+
+# Optional dependencies (uncomment if needed)
+# channels-redis==4.1.0   # For Redis channel layer
+# redis==5.0.1            # For Redis
+# celery==5.3.4           # For background tasks
