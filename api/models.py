@@ -274,9 +274,9 @@ class AnonymousLocation(models.Model):
     # }
     
     # Location data
-    latitude = models.DecimalField(max_digits=9, decimal_places=6)
-    longitude = models.DecimalField(max_digits=9, decimal_places=6)
-    accuracy = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    latitude = models.DecimalField(max_digits=12, decimal_places=8)  # Supports -90.12345678 to 90.12345678
+    longitude = models.DecimalField(max_digits=12, decimal_places=8)  # Supports -180.12345678 to 180.12345678
+    accuracy = models.DecimalField(max_digits=15, decimal_places=2, null=True, blank=True)  # Supports large accuracy values
     
     # Tracking
     created_at = models.DateTimeField(auto_now_add=True)
