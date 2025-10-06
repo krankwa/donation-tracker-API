@@ -222,7 +222,7 @@ SIMPLE_JWT = {
 # CORS Settings
 CORS_ALLOWED_ORIGINS = config(
     'CORS_ALLOWED_ORIGINS',
-    default='http://localhost:4200',
+    default='http://localhost:4200,https://relief-hero.vercel.app',
     cast=Csv()
 )
 
@@ -329,7 +329,7 @@ if not DEBUG:
     SECURE_BROWSER_XSS_FILTER = config('SECURE_BROWSER_XSS_FILTER', default=True, cast=bool)
     
     # CORS Settings for Production
-    CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:4200,http://localhost:3000').split(',')
+    CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:4200,http://localhost:3000,https://relief-hero.vercel.app').split(',')
     CORS_ALLOW_CREDENTIALS = True
     
     # Session Security
