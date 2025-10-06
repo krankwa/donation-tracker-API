@@ -79,7 +79,8 @@ class Location(models.Model):
     longitude = models.DecimalField(max_digits=9, decimal_places=6)
     timestamp = models.DateTimeField(auto_now_add=True)
     is_current = models.BooleanField(default=True)
-    accuracy = models.FloatField(null=True, blank=True)  # GPS accuracy in meters
+    # Use DecimalField for accuracy to control precision and avoid validation errors
+    accuracy = models.DecimalField(null=True, blank=True, max_digits=20, decimal_places=8, help_text="GPS accuracy in meters")
     
     def __str__(self):
         return f"{self.user.email} - {self.latitude}, {self.longitude}"
@@ -276,7 +277,8 @@ class AnonymousLocation(models.Model):
     # Location data
     latitude = models.DecimalField(max_digits=12, decimal_places=8)  # Supports -90.12345678 to 90.12345678
     longitude = models.DecimalField(max_digits=12, decimal_places=8)  # Supports -180.12345678 to 180.12345678
-    accuracy = models.DecimalField(max_digits=15, decimal_places=2, null=True, blank=True)  # Supports large accuracy values
+    # store accuracy as Decimal with generous precision to accept device-reported values
+    accuracy = models.DecimalField(null=True, blank=True, max_digits=20, decimal_places=8, help_text="Location accuracy in meters")
     
     # Tracking
     created_at = models.DateTimeField(auto_now_add=True)
@@ -356,7 +358,8 @@ class LocationUpdate(models.Model):
     )
     latitude = models.DecimalField(max_digits=10, decimal_places=8)
     longitude = models.DecimalField(max_digits=11, decimal_places=8)
-    accuracy = models.FloatField(help_text="Location accuracy in meters")
+    # Use DecimalField for accuracy to reduce validation truncation issues from mobile clients
+    accuracy = models.DecimalField(max_digits=20, decimal_places=8, help_text="Location accuracy in meters")
     timestamp = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
