@@ -329,7 +329,7 @@ if not DEBUG:
     SECURE_BROWSER_XSS_FILTER = config('SECURE_BROWSER_XSS_FILTER', default=True, cast=bool)
     
     # CORS Settings for Production
-    CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='').split(',') if config('CORS_ALLOWED_ORIGINS', default='') else []
+    CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:4200,http://localhost:3000').split(',')
     CORS_ALLOW_CREDENTIALS = True
     
     # Session Security
